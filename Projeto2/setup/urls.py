@@ -3,8 +3,7 @@ from django.contrib import admin
 from django.urls import path
 #from todos.views import home
 #from todos.views import todo_list
-from todos.views import TodoListView
-from todos.views import TodoCreateView
+from todos.views import (TodoListView, TodoCreateView, TodoUpdateView, TodoDeleteView)
 
 
 #urlpatterns = [path("admin/", admin.site.urls), path("", home)]
@@ -19,4 +18,6 @@ from todos.views import TodoCreateView
 
 urlpatterns = [path("admin/", admin.site.urls),
  path("", TodoListView.as_view(), name="todo_list"),
- path("create", TodoCreateView.as_view(), name="todo_create")]
+ path("create", TodoCreateView.as_view(), name="todo_create"),
+ path("update/<int:pk>",TodoUpdateView.as_view(),name="todo_update"),
+ path("delete/<int:pk>",TodoDeleteView.as_view(),name="todo_delete")]
